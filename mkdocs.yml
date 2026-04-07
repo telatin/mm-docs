@@ -1,5 +1,5 @@
 site_name: CLIMB | Cloud Infrastructure for Microbial Bioinformatics
-site_url: https://sitename.example/climb-docs/
+site_url: https://telatin.github.io/mm-docs//
 theme:
   name: material
   logo: assets/logo-square_CLIMB-BIG-DATA.png

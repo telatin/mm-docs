@@ -1,5 +1,5 @@
 site_name: CLIMB | Cloud Infrastructure for Microbial Bioinformatics
-site_url: https://sitename.example
+site_url: https://sitename.example/climb-docs/
 theme:
   name: material
   logo: assets/logo-square_CLIMB-BIG-DATA.png

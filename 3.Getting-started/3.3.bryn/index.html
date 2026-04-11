@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bryn interface – CLIMB | Cloud Infrastructure for Microbial Bioinformatics</title>
+  
+  <link rel="canonical" href="https://telatin.github.io/mm-docs/3.Getting-started/3.3.bryn/">
+  <link rel="icon" type="image/png" href="../../assets/logo-square_CLIMB-BIG-DATA.png">
+  <meta name="search-index-url" content="../../search/search_index.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/climb.css">
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+<!-- ══ Sidebar ══════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar" aria-label="Section navigation">
+  <div class="sidebar-header">
+    <a href="../.." class="site-brand">
+      <img src="../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="30" height="30">
+      <span class="site-brand-name">CLIMB</span>
+    </a>
+    <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+    <div class="sidebar-mobile-sections">
+      <p class="sidebar-section-label">Sections</p>
+      <ul class="nav-root"><li class="nav-page">
+            <a href="../../1.Overview/">Overview</a>
+          </li><li class="nav-page">
+            <a href="../../2.Pricing/">Pricing</a>
+          </li><li class="nav-page active">
+            <a href="../">Getting started</a>
+          </li><li class="nav-page">
+            <a href="../../4.Documentation/">Documentation</a>
+          </li><li class="nav-page">
+            <a href="../../5.Support/">Support</a>
+          </li></ul>
+    </div>
+      <p class="sidebar-section-label sidebar-section-label--sub">Getting started</p>
+      <ul class="nav-root">
+        <li class="nav-page">
+      <a href="../">Getting started</a>
+    </li><li class="nav-page">
+      <a href="../3.1.registration/">Registration</a>
+    </li><li class="nav-page">
+      <a href="../3.2.authentication/">Authentication</a>
+    </li><li class="nav-page active">
+      <a href="./">Bryn interface</a>
+    </li>
+      </ul></nav>
+</aside>
+
+<!-- ══ Page shell ════════════════════════════════════════════ -->
+<div class="page-shell">
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <button class="menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../.." class="mobile-brand">
+        <img src="../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="26" height="26">
+        <span>CLIMB</span>
+      </a>
+    </div>
+
+    <!-- Horizontal section tabs -->
+    <nav class="section-tabs" aria-label="Main sections"><a href="../../1.Overview/"
+           class="section-tab">
+          Overview
+        </a><a href="../../2.Pricing/"
+           class="section-tab">
+          Pricing
+        </a><a href="../"
+           class="section-tab active">
+          Getting started
+        </a><a href="../../4.Documentation/"
+           class="section-tab">
+          Documentation
+        </a><a href="../../5.Support/"
+           class="section-tab">
+          Support
+        </a></nav>
+
+    <div class="top-bar-right">
+      <button class="search-trigger" id="search-trigger" aria-label="Search documentation" aria-haspopup="dialog">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="search-trigger-label">Search</span>
+        <kbd class="search-kbd" aria-hidden="true">⌘K</kbd>
+      </button>
+      <a href="mailto:climb@quadram.ac.uk" class="top-bar-icon-btn" title="Email support" aria-label="Email support">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Search dialog -->
+  <div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" hidden>
+    <div class="search-dialog">
+      <div class="search-dialog-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="search-input" class="search-dialog-input" placeholder="Search documentation…" autocomplete="off" spellcheck="false">
+        <button id="search-close" class="search-dialog-esc" aria-label="Close search">ESC</button>
+      </div>
+      <div class="search-dialog-body" id="search-body">
+        <p class="search-hint">Type to search across all pages…</p>
+      </div>
+    </div>
+  </div>
+  <div class="search-backdrop" id="search-backdrop"></div>
+
+  <!-- Content -->
+  <div class="content-wrapper">
+    
+    <main class="page-main" id="main-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../..">Home</a></li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>Getting started
+          </li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span aria-current="page">Bryn interface</span>
+          </li>
+        </ol>
+      </nav>
+
+      <article class="md-content">
+        <h1 id="the-bryn-interface"><strong>The Bryn interface</strong><a class="headerlink" href="#the-bryn-interface" title="Permanent link">#</a></h1>
+<hr />
+<p><img alt="**Bryn logo**" src="../img/bryn.png" /></p>
+<p><a href="https://bryn.climb.ac.uk"><strong>Bryn</strong></a> is the web interface for CLIMB and is the primary way to access the infrastructure.
+From Bryn, you can manage your team and the teams' resources.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>As of 1st April 2026, the bryn dashboard has gone through some <strong>major upgrades</strong> with a brand new look ! To get familiar with the new layout and features please read the sections below.</p>
+</div>
+<p>This page will guide you through the new interface with the following sections:</p>
+<ul>
+<li><a href="./#the-bryn-dashboard"><strong>The Bryn dashboard</strong></a></li>
+<li><a href="./#jupyterlab"><strong>JupyterLab</strong></a></li>
+<li><a href="./#s3-buckets"><strong>S3 Buckets</strong></a></li>
+<li><a href="./#team"><strong>Team</strong></a></li>
+<li><a href="./#expanding-resource"><strong>Expanding resource</strong></a></li>
+<li><a href="./#user-profile"><strong>User profile</strong></a></li>
+<li><a href="./#access-to-support"><strong>Access to Support</strong></a></li>
+</ul>
+<hr />
+<h2 id="the-bryn-dashboard"><strong>The Bryn dashboard</strong><a class="headerlink" href="#the-bryn-dashboard" title="Permanent link">#</a></h2>
+<p>When you first log in to <strong>bryn</strong>, you will see the new Bryn interface with a <strong>JupyterLab Environment</strong> dashboard.</p>
+<p><img alt="**dashboard**" src="../img/dashboard-1.1.png" /></p>
+<p>On the top left you can find the following features:</p>
+<p><strong>Current Team and Project</strong> - If you are part of multiple teams, you can switch between team dashboards using this drop down menu.</p>
+<p><strong>Navigation</strong></p>
+<ul>
+<li><a href="./#jupyterlab"><strong>JupyterLab:</strong></a> Here you can see announcements, a summary of your team and it's resources and access <strong>JupyterLab</strong>.</li>
+<li><a href="./#s3-buckets"><strong>S3 Buckets:</strong></a> Here you can create and manage your <strong>S3 buckets</strong>.</li>
+<li><a href="./#team"><strong>Team:</strong></a> Here you can manage your team and it's members.</li>
+</ul>
+<p>Each navigation tab and it's features will be described below.</p>
+<p>On the bottom left you can find the following features:</p>
+<p><strong>Open support ticket</strong> - Request support from our Team.</p>
+<p><strong>Register New Team</strong> - If required, register for a new CLIMB Team.</p>
+<p><strong>Project Dashboard</strong> - This is a package specific feature and only relevant for Project users.</p>
+<p><strong>User profile</strong> - You can access your account details and sign out at the bottom left of the dashboard.</p>
+<hr />
+<h2 id="jupyterlab"><strong>JupyterLab</strong><a class="headerlink" href="#jupyterlab" title="Permanent link">#</a></h2>
+<p>This dashboard provides a summary of the resource you have access to based on your current package and quota. The dashboard is split into six sections; Announcements, Volume Storage, JupyterLab environment, S3 Object Storage, Team Information and Team Compute.</p>
+<p><img alt="**dashboard**" src="../img/dashboard-1.2.png" /></p>
+<p><strong>1. Announcements:</strong> </p>
+<p>The CLIMB team will occasionally send important updates on the service or infrastructure.</p>
+<p>Each announcement will appear slightly differently depending on the announcement category, with more recent announcements prioritised:</p>
+<p><img alt="Bryn" src="../img/announcement-1.png" /></p>
+<p><strong>Service Outage:</strong> Red banner for infrastructure outages and maintenance downtime.</p>
+<p><strong>Service Restored:</strong> Green banner for infrastructure restoration.</p>
+<p><strong>Service Info and News:</strong> White banner for general updates on the service.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>We aim to provide at least 2 weeks notice of infrastructure downtime where possible. Please make sure to check your dashboard announcements regularly to stay in the loop !  </p>
+</div>
+<p>You can minimise announcements by clicking the <strong>Mark as read</strong> button.</p>
+<p><img alt="Bryn" src="../img/announcement-1.png" /></p>
+<p>To open the announcements again, click the <strong>[N] announcements marked as read</strong> button.</p>
+<p><img alt="Bryn" src="../img/announcement-2.png" /></p>
+<p><strong>2. Volume Storage:</strong> </p>
+<p>A summary of the persistent storage (Home Directory and Team Share) available for your team. </p>
+<p><img alt="**dashboard**" src="../img/dashboard-2.png" /></p>
+<p>For more information on the different types of storage we offer and how to use them see our <a href="../../4.Documentation/4.2.Storage/"><strong>Storage page</strong></a>.</p>
+<p><strong>3. JupyterLab environment:</strong> </p>
+<p>Here you can launch and access <strong>JupyterLab environments</strong>.</p>
+<p><img alt="**dashboard**" src="../img/dashboard-3.png" /></p>
+<p>For more information on what JupyterLab environments are and how to use them see our <a href="../../4.Documentation/4.1.JupyterLab/"><strong>JupyterLab page</strong></a>.</p>
+<p><strong>4. S3 Object Storage:</strong> </p>
+<p>A summary of the S3 bucket storage available for your team.</p>
+<p><img alt="**dashboard**" src="../img/dashboard-4.png" /></p>
+<p>If you click on the tile you can navigate to the <a href="./#s3-buckets"><strong>S3 Buckets section</strong></a>.</p>
+<p><strong>5. Team Information:</strong> </p>
+<p>A summary of your team and it's members.</p>
+<p><img alt="**dashboard**" src="../img/dashboard-5.png" /></p>
+<p>If you click on the tile you can navigate to the <a href="./#team"><strong>Team section</strong></a>.</p>
+<p><strong>6. Team Compute:</strong> </p>
+<p>A summary of the vCPUs/GPUs available for your team.</p>
+<p>This will appear as <strong>Unavailable</strong> at first:</p>
+<p><img alt="**dashboard**" src="../img/dashboard-6.png" /></p>
+<p>However, once a JupyterLab environment is launched for the first time, the tile will update with the <strong>Available status</strong>.</p>
+<p><img alt="**dashboard**" src="../img/dashboard-7.png" /></p>
+<hr />
+<h2 id="s3-buckets"><strong>S3 Buckets</strong><a class="headerlink" href="#s3-buckets" title="Permanent link">#</a></h2>
+<p>Here you can create and manage your <strong>S3 buckets</strong>. S3 (Simple Storage Service) buckets are <strong>cloud storage containers</strong> provided by Amazon Web Services (AWS).</p>
+<p><img alt="S3-Buckets-1" src="../img/s3-1.png" /> </p>
+<p>For more information on what S3 buckets are and how to use them see our <a href="../../4.Documentation/4.2.Storage/"><strong>Storage page</strong></a>.</p>
+<hr />
+<h2 id="team"><strong>Team</strong><a class="headerlink" href="#team" title="Permanent link">#</a></h2>
+<p>Here you can manage your team and it's members. The dashboard is split into 3 sections; Team Access, Team Details and Licence &amp; Quota.</p>
+<p><img alt="**Team**" src="../img/team-1.png" /></p>
+<p><strong>1. Team Access:</strong> </p>
+<p>A summary of the members of your team with their roles and any pending invitations.</p>
+<p><img alt="**Team**" src="../img/team-2.1.png" /></p>
+<p><strong>2. Team Details:</strong> </p>
+<p>A summary of the details provided when you first registered for the Team. This can be updated and confirmed by clicking the <strong>Save Changes</strong> button at the bottom right of the tile.</p>
+<p><img alt="**Team**" src="../img/team-2.png" /></p>
+<p><strong>3. Licence &amp; Quota:</strong></p>
+<p>Here you can see information on your current licence and Team Quota including the total amount of resource (vCPU/GPU) and Storage (S3/Team Share) you have access to.</p>
+<p><img alt="**Team**" src="../img/team-3.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Your licence will cover the period of time which you have paid for or if you are using our trial package, the licence will cover up to 4 months of CLIMB usage. This will need to be renewed each time a package is paid for or extended.</p>
+</div>
+<p>For more information on Teams and Team management see the <a href="../3.1.registration/"><strong>Registration page</strong></a>.</p>
+<hr />
+<h2 id="expanding-resource"><strong>Expanding resource</strong><a class="headerlink" href="#expanding-resource" title="Permanent link">#</a></h2>
+<p>See our <a href="../../2.Pricing/"><strong>Pricing page</strong></a> for more information on expanding your quota and <a href="mailto:climb@quadram.ac.uk"><strong>contact us</strong></a> to discuss what CLIMB can offer.</p>
+<div class="admonition failure">
+<p class="admonition-title">Legacy features</p>
+<p>We no longer support legacy features such as VMs and Volumes.</p>
+</div>
+<hr />
+<h2 id="user-profile"><strong>User profile</strong><a class="headerlink" href="#user-profile" title="Permanent link">#</a></h2>
+<p>You can access your <strong>CLIMB user profile</strong> by selecting the tab at the bottom left of the dashboard:</p>
+<p><img alt="**dashboard**" src="../img/dashboard-1.1.1.png" /></p>
+<p>Here you have the option to sign out of your account or can select <strong>Profile</strong>:</p>
+<p><img alt="**profile**" src="../img/profile-1.png" /></p>
+<p>Within your user profile you can manage your account and any authentication you have set up. The dashboard is split into 2 sections; Profile Information and Security:</p>
+<p><img alt="**profile**" src="../img/profile-2.png" /></p>
+<p><strong>1. Profile Information:</strong> </p>
+<p>A summary of the details provided when you first registered for a CLIMB account.</p>
+<p><img alt="**profile**" src="../img/profile-3.png" /></p>
+<p>Here you can update your email address but this will <strong>require verification</strong>.</p>
+<p><strong>2. Security:</strong> </p>
+<p>Here, you can view or generate your backup codes and disable 2FA (for example you wish to use a different device or app).</p>
+<p><img alt="**profile**" src="../img/profile-4.png" /></p>
+<p>For more information on account authentication options and management see the <a href="../3.2.authentication/"><strong>Authentication page</strong></a>.</p>
+<hr />
+<h2 id="access-to-support"><strong>Access to Support</strong><a class="headerlink" href="#access-to-support" title="Permanent link">#</a></h2>
+<p>At the bottom left of the page you will find a button to <strong>Open a support ticket</strong>.</p>
+<p><img alt="**ticket**" src="../img/bryn-ticket.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When submitting a ticket, please provide as much information as possible with <strong>reproducible examples/screenshots</strong> if required.</p>
+</div>
+<p>All responses from our support team will be via email address.</p>
+<hr />
+<h2 id="404-error"><strong>404 error</strong><a class="headerlink" href="#404-error" title="Permanent link">#</a></h2>
+<p>It is possible to be part of multiple CLIMB teams. If the last team you viewed on your bryn dashboard is disabled, you may receive a <strong>404 Not Found error</strong> as seen below. If this happens, please <a href="mailto:climb@quadram.ac.uk"><strong>contact us</strong></a>.</p>
+<p><img alt="**404 error**" src="../img/bryn-404-error.png" /></p>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="../3.2.authentication/" class="page-nav-card page-nav-prev">
+          <span class="page-nav-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Previous
+          </span>
+          <span class="page-nav-title">Authentication</span>
+        </a>
+        <a href="../../4.Documentation/" class="page-nav-card page-nav-next">
+          <span class="page-nav-label">
+            Next
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+          <span class="page-nav-title">Documentation</span>
+        </a>
+      </nav>
+
+    </main>
+    <aside class="toc-panel" aria-label="Table of contents">
+      <div class="toc-inner">
+        <p class="toc-heading">On this page</p>
+        <nav>
+          
+            <a href="#the-bryn-interface" class="toc-link toc-d1">The Bryn interface</a>
+            <a href="#the-bryn-dashboard" class="toc-link toc-d2">The Bryn dashboard</a>
+            <a href="#jupyterlab" class="toc-link toc-d2">JupyterLab</a>
+            <a href="#s3-buckets" class="toc-link toc-d2">S3 Buckets</a>
+            <a href="#team" class="toc-link toc-d2">Team</a>
+            <a href="#expanding-resource" class="toc-link toc-d2">Expanding resource</a>
+            <a href="#user-profile" class="toc-link toc-d2">User profile</a>
+            <a href="#access-to-support" class="toc-link toc-d2">Access to Support</a>
+            <a href="#404-error" class="toc-link toc-d2">404 error</a>
+        </nav>
+      </div>
+    </aside>
+
+    
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="22" height="22">
+        <span>Copyright &copy; CLIMB 2026</span>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:climb@quadram.ac.uk" class="footer-link">climb@quadram.ac.uk</a>
+        <a href="https://bryn.climb.ac.uk/" class="footer-link" target="_blank" rel="noopener">Bryn Portal</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- .page-shell -->
+
+<script src="../../assets/js/climb.js"></script>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>terminal – CLIMB | Cloud Infrastructure for Microbial Bioinformatics</title>
+  
+  <link rel="canonical" href="https://telatin.github.io/mm-docs/4.Documentation/4.1.JupyterLab/4.1.3.terminal/">
+  <link rel="icon" type="image/png" href="../../../assets/logo-square_CLIMB-BIG-DATA.png">
+  <meta name="search-index-url" content="../../../search/search_index.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/climb.css">
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+<!-- ══ Sidebar ══════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar" aria-label="Section navigation">
+  <div class="sidebar-header">
+    <a href="../../.." class="site-brand">
+      <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="30" height="30">
+      <span class="site-brand-name">CLIMB</span>
+    </a>
+    <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+    <div class="sidebar-mobile-sections">
+      <p class="sidebar-section-label">Sections</p>
+      <ul class="nav-root"><li class="nav-page">
+            <a href="../../../1.Overview/">Overview</a>
+          </li><li class="nav-page">
+            <a href="../../../2.Pricing/">Pricing</a>
+          </li><li class="nav-page">
+            <a href="../../../3.Getting-started/">Getting started</a>
+          </li><li class="nav-page active">
+            <a href="../../">Documentation</a>
+          </li><li class="nav-page">
+            <a href="../../../5.Support/">Support</a>
+          </li></ul>
+    </div>
+      <p class="sidebar-section-label sidebar-section-label--sub">Documentation</p>
+      <ul class="nav-root">
+        <li class="nav-page">
+      <a href="../../">Documentation</a>
+    </li><li class="nav-section active">
+      <button class="nav-section-btn open" aria-expanded="true">
+        <span>JupyterLab</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children open">
+        <li class="nav-page">
+      <a href="../">JupyterLab</a>
+    </li><li class="nav-page">
+      <a href="../4.1.1.jupyterLab-envs/">JupyterLab</a>
+    </li><li class="nav-page">
+      <a href="../4.1.2.interface/">JupyterLab interface</a>
+    </li><li class="nav-page active">
+      <a href="./">terminal</a>
+    </li><li class="nav-page">
+      <a href="../4.1.4.jupyter-notebook/">Jupyter notebooks</a>
+    </li><li class="nav-page">
+      <a href="../4.1.5.rstudio/">RStudio</a>
+    </li><li class="nav-page">
+      <a href="../4.1.6.nextflow/">Nextflow</a>
+    </li>
+      </ul>
+    </li><li class="nav-section">
+      <button class="nav-section-btn" aria-expanded="false">
+        <span>Storage</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children">
+        <li class="nav-page">
+      <a href="../../4.2.Storage/">Storage</a>
+    </li><li class="nav-page">
+      <a href="../../4.2.Storage/4.2.1.storage/">Storage</a>
+    </li><li class="nav-page">
+      <a href="../../4.2.Storage/4.2.2.s3-buckets/">S3 Buckets</a>
+    </li>
+      </ul>
+    </li><li class="nav-section">
+      <button class="nav-section-btn" aria-expanded="false">
+        <span>Projects</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children">
+        <li class="nav-page">
+      <a href="../../4.3.Projects/projects/">Projects</a>
+    </li>
+      </ul>
+    </li>
+      </ul></nav>
+</aside>
+
+<!-- ══ Page shell ════════════════════════════════════════════ -->
+<div class="page-shell">
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <button class="menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../../.." class="mobile-brand">
+        <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="26" height="26">
+        <span>CLIMB</span>
+      </a>
+    </div>
+
+    <!-- Horizontal section tabs -->
+    <nav class="section-tabs" aria-label="Main sections"><a href="../../../1.Overview/"
+           class="section-tab">
+          Overview
+        </a><a href="../../../2.Pricing/"
+           class="section-tab">
+          Pricing
+        </a><a href="../../../3.Getting-started/"
+           class="section-tab">
+          Getting started
+        </a><a href="../../"
+           class="section-tab active">
+          Documentation
+        </a><a href="../../../5.Support/"
+           class="section-tab">
+          Support
+        </a></nav>
+
+    <div class="top-bar-right">
+      <button class="search-trigger" id="search-trigger" aria-label="Search documentation" aria-haspopup="dialog">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="search-trigger-label">Search</span>
+        <kbd class="search-kbd" aria-hidden="true">⌘K</kbd>
+      </button>
+      <a href="mailto:climb@quadram.ac.uk" class="top-bar-icon-btn" title="Email support" aria-label="Email support">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Search dialog -->
+  <div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" hidden>
+    <div class="search-dialog">
+      <div class="search-dialog-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="search-input" class="search-dialog-input" placeholder="Search documentation…" autocomplete="off" spellcheck="false">
+        <button id="search-close" class="search-dialog-esc" aria-label="Close search">ESC</button>
+      </div>
+      <div class="search-dialog-body" id="search-body">
+        <p class="search-hint">Type to search across all pages…</p>
+      </div>
+    </div>
+  </div>
+  <div class="search-backdrop" id="search-backdrop"></div>
+
+  <!-- Content -->
+  <div class="content-wrapper">
+    
+    <main class="page-main" id="main-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../../..">Home</a></li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>Documentation
+          </li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>JupyterLab
+          </li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span aria-current="page">terminal</span>
+          </li>
+        </ol>
+      </nav>
+
+      <article class="md-content">
+        <h1 id="using-the-terminal"><strong>Using the terminal</strong><a class="headerlink" href="#using-the-terminal" title="Permanent link">#</a></h1>
+<hr />
+<p>Through JupyterLab you can access the terminal for system shells.</p>
+<p>The Unix command line is a powerful tool that allows you to interact with your computer's operating system through text-based commands via a terminal. It is widely used in various platforms, including Linux and macOS. Mastering the command line can greatly enhance your productivity and enable you to perform various tasks efficiently.</p>
+<p>This page will guide you through the basics of the Unix command line with the following sections:</p>
+<ul>
+<li><a href="./#accessing-the-terminal"><strong>Accessing the terminal</strong></a></li>
+<li><a href="./#basic-commands"><strong>Basic Commands</strong></a></li>
+<li><a href="./#file-permissions-in-linux"><strong>File permissions in Linux</strong></a></li>
+<li><a href="./#about-linux-pipelines"><strong>About Linux Pipelines</strong></a></li>
+</ul>
+<hr />
+<h2 id="accessing-the-terminal"><strong>Accessing the terminal</strong><a class="headerlink" href="#accessing-the-terminal" title="Permanent link">#</a></h2>
+<p>To access the Unix command line, you need to open a terminal.</p>
+<p>Select <code>File -&gt; New -&gt; terminal</code>, or you can launch a terminal session from the Other launcher within the main work area:</p>
+<p><img alt="launcher" src="../img/launcher-3.png" /></p>
+<p>You'll get a new terminal tab in the activity bar, and will find yourself in a bash shell.</p>
+<h2 id="where-am-i-who-am-i"><strong>Where am I? Who am I?</strong><a class="headerlink" href="#where-am-i-who-am-i" title="Permanent link">#</a></h2>
+<p>By default, you're in a bash shell running against the base operating system of the <code>climb-jupyterhub</code> container image (which is based on Ubuntu). You'll see in your bash prompt that you're in your home directory (represented by the tilde character <code>~</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="gp">jovyan:~$ </span><span class="nb">pwd</span>
+<span class="go">/home/jovyan</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Who is jovyan?</p>
+<p>Looking at your bash prompt, you'll notice that your username is <code>jovyan</code> (there's a backstory, but it means 'related to Jupyter'). Why is everyone's username the same? Your notebook server is running as a <a href="https://cloud.google.com/learn/what-are-containers">container</a>. The container instance is private and linked to your Bryn user's storage, but the image it runs is the same for everyone. As a result, it is not necessary or desirable to have unique system users.</p>
+<p><strong>TLDR:</strong> don't worry about it. Inside your notebook server, your username is <code>jovyan</code></p>
+</div>
+<p><img alt="By jove comic" src="../../img/by-jove.jpg" /></p>
+<div class="admonition info">
+<p class="admonition-title">What about sudo?</p>
+<p><code>jovyan</code> doesn't have sudo privileges. This may seem restrictive, but we've pre-configured the <code>climb-jupyter</code> base image with everything you'd likely need sudo for pre-installed. Everything else should be installable via package managers, such as Conda. You'll also be able to run Nextflow against out K8s execution environment 'out-of-the-box'.</p>
+</div>
+<hr />
+<h2 id="basic-commands"><strong>Basic Commands</strong><a class="headerlink" href="#basic-commands" title="Permanent link">#</a></h2>
+<p>Let's start with some fundamental commands to get you acquainted with the Unix command line:</p>
+<ol>
+<li>
+<p><code>pwd</code> (Print Working Directory):
+   Displays the current directory (folder) you are in.
+   <div class="highlight"><pre><span></span><code>pwd
+/Users/username/documents
+</code></pre></div></p>
+</li>
+<li>
+<p><code>ls</code> (List):
+   Lists the files and directories in the current directory.
+   <div class="highlight"><pre><span></span><code>ls
+file1.txt  file2.txt  folder1  folder2
+</code></pre></div></p>
+</li>
+<li>
+<p><code>cd</code> (Change Directory):
+   Allows you to navigate to a different directory.
+   <div class="highlight"><pre><span></span><code>cd folder1
+</code></pre></div></p>
+</li>
+<li>
+<p><code>mkdir</code> (Make Directory):
+   Creates a new directory.
+   <div class="highlight"><pre><span></span><code>mkdir new_folder
+</code></pre></div></p>
+</li>
+<li>
+<p><code>touch</code>:
+   Creates an empty file.
+   <div class="highlight"><pre><span></span><code>touch new_file.txt
+</code></pre></div></p>
+</li>
+<li>
+<p><code>rm</code> (Remove):
+   Deletes files or directories.
+   <div class="highlight"><pre><span></span><code>rm file1.txt
+rm -r folder1
+</code></pre></div></p>
+</li>
+<li>
+<p><code>mv</code> (Move):
+   Moves or renames files and directories.
+   <div class="highlight"><pre><span></span><code>mv file2.txt folder2/
+mv file2.txt new_filename.txt
+</code></pre></div></p>
+</li>
+<li>
+<p><code>cp</code> (Copy):
+   Copies files or directories.
+   <div class="highlight"><pre><span></span><code>cp file1.txt folder2/
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="navigating-the-file-system"><strong>Navigating the File System</strong><a class="headerlink" href="#navigating-the-file-system" title="Permanent link">#</a></h3>
+<p>The Unix file system is organized in a hierarchical structure. Each directory can contain files and other directories. Here are some additional commands to help you navigate the file system:</p>
+<ol>
+<li>
+<p><code>cd</code> (Change Directory):
+   As mentioned earlier, <code>cd</code> allows you to change your current directory. You can use absolute or relative paths.
+   <div class="highlight"><pre><span></span><code>cd /path/to/directory  # Absolute path
+cd ../parent_directory  # Relative path (move up one level)
+cd folder3/subfolder   # Relative path (move down into subfolder)
+</code></pre></div></p>
+</li>
+<li>
+<p><code>ls</code> (List):
+   You can use various options with <code>ls</code> to customize the output:
+   <div class="highlight"><pre><span></span><code>ls -l  # Long listing format with detailed information
+ls -a  # List all files, including hidden ones (those starting with .)
+ls -h  # Human-readable file sizes
+ls *.txt  # List all files ending with .txt
+</code></pre></div></p>
+</li>
+<li>
+<p><code>pwd</code> (Print Working Directory):
+   Useful to check where you are in the file system.</p>
+</li>
+<li>
+<p><code>..</code> and <code>.</code>:
+   <code>..</code> refers to the parent directory, while <code>.</code> refers to the current directory. They can be handy when constructing paths.</p>
+</li>
+</ol>
+<h3 id="file-manipulation"><strong>File Manipulation</strong><a class="headerlink" href="#file-manipulation" title="Permanent link">#</a></h3>
+<p>Now let's explore some additional commands to manipulate files:</p>
+<ol>
+<li>
+<p><code>cat</code> (Concatenate):
+   Displays the content of a file.
+   <div class="highlight"><pre><span></span><code>cat file1.txt
+</code></pre></div></p>
+</li>
+<li>
+<p><code>less</code> and <code>more</code>:
+   Allow you to view the content of large files interactively.
+   <div class="highlight"><pre><span></span><code>less large_file.txt
+more another_large_file.txt
+</code></pre></div>
+   Use the arrow keys to scroll, and press <code>q</code> to exit.</p>
+</li>
+<li>
+<p><code>head</code> and <code>tail</code>:
+   Display the beginning or end of a file.
+   <div class="highlight"><pre><span></span><code>head file1.txt  # Show the first few lines
+tail file1.txt  # Show the last few lines
+</code></pre></div></p>
+</li>
+<li>
+<p><code>grep</code>:
+   Searches for a pattern in a file.
+   <div class="highlight"><pre><span></span><code>grep &quot;keyword&quot; file1.txt
+</code></pre></div></p>
+</li>
+<li>
+<p><code>wc</code> (Word Count):
+   Counts the number of lines, words, and characters in a file.
+   <div class="highlight"><pre><span></span><code>wc file1.txt
+</code></pre></div></p>
+</li>
+</ol>
+<hr />
+<h2 id="file-permissions-in-linux"><strong>File permissions in Linux</strong><a class="headerlink" href="#file-permissions-in-linux" title="Permanent link">#</a></h2>
+<p>File permissions in Linux are a crucial aspect of the operating system's security model. They determine who can access files and directories and what actions they can perform on them. Understanding and managing file permissions are essential skills for any Linux user and system administrator.</p>
+<p>In Linux, every file and directory has three sets of permissions, corresponding to three different categories of users:</p>
+<ol>
+<li><strong>Owner</strong>: The user who created the file or directory.</li>
+<li><strong>Group</strong>: A group to which the file or directory belongs. Each user can be a member of multiple groups, and one of these groups is the primary group for that user.</li>
+<li><strong>Others</strong>: Any user on the system who is not the owner and does not belong to the group associated with the file or directory.</li>
+</ol>
+<p>For each of these categories, there are three basic types of permissions:</p>
+<ol>
+<li><strong>Read (r)</strong>: Allows the user to view the contents of a file or list the contents of a directory.</li>
+<li><strong>Write (w)</strong>: Allows the user to modify the contents of a file or create, delete, and rename files within a directory.</li>
+<li><strong>Execute (x)</strong>: For files, allows the user to execute the file as a program. For directories, it allows the user to access its contents (i.e., <code>cd</code> into it).</li>
+</ol>
+<h3 id="displaying-file-permissions"><strong>Displaying File Permissions</strong><a class="headerlink" href="#displaying-file-permissions" title="Permanent link">#</a></h3>
+<p>You can use the <code>ls</code> command with the <code>-l</code> option to display file permissions in long format:</p>
+<div class="highlight"><pre><span></span><code>$ ls -l
+-rw-r--r-- 1 user group  4096 Jul 20 10:00 myfile.txt
+drwxr-xr-x 2 user group  4096 Jul 20 10:00 mydir
+</code></pre></div>
+<p>In the output, the first column represents the file permissions. The first character indicates the file type (<code>-</code> for regular files, <code>d</code> for directories). The next nine characters are divided into three sets of three characters, representing permissions for owner, group, and others, respectively.</p>
+<h3 id="changing-file-permissions"><strong>Changing File Permissions</strong><a class="headerlink" href="#changing-file-permissions" title="Permanent link">#</a></h3>
+<p>You can modify file permissions using the <code>chmod</code> command. There are two ways to specify permissions: symbolic notation and octal notation.</p>
+<h3 id="symbolic-notation"><strong>Symbolic Notation</strong><a class="headerlink" href="#symbolic-notation" title="Permanent link">#</a></h3>
+<p>In symbolic notation, you use letters to add or remove permissions. The letters are <code>+</code> (add), <code>-</code> (remove), and <code>=</code> (set explicitly).</p>
+<p>For example, to give the owner read and write permissions on a file:</p>
+<div class="highlight"><pre><span></span><code>$ chmod u+rw myfile.txt
+</code></pre></div>
+<p>To remove execute permission for others on a directory:</p>
+<div class="highlight"><pre><span></span><code>$ chmod o-x mydir
+</code></pre></div>
+<h3 id="octal-notation"><strong>Octal Notation</strong><a class="headerlink" href="#octal-notation" title="Permanent link">#</a></h3>
+<p>Octal notation represents file permissions using a three-digit number. Each digit corresponds to one of the permission sets (owner, group, others). The digits are calculated by adding the values for read (4), write (2), and execute (1) permissions.</p>
+<p>For example, to set read, write, and execute permissions for the owner and read-only permissions for the group and others:</p>
+<div class="highlight"><pre><span></span><code>$ chmod 755 myfile.txt
+</code></pre></div>
+<h3 id="recursively-changing-permissions"><strong>Recursively Changing Permissions</strong><a class="headerlink" href="#recursively-changing-permissions" title="Permanent link">#</a></h3>
+<p>The <code>chmod</code> command can be used with the <code>-R</code> option to recursively change permissions for directories and their contents.</p>
+<div class="highlight"><pre><span></span><code>$ chmod -R 755 mydir
+</code></pre></div>
+<h3 id="special-permissions"><strong>Special Permissions</strong><a class="headerlink" href="#special-permissions" title="Permanent link">#</a></h3>
+<p>There are three special permissions that can be set on files and directories:</p>
+<ol>
+<li>
+<p><strong>Setuid (SUID)</strong>: When set on an executable file, it allows the user who runs the program to temporarily inherit the owner's privileges.</p>
+</li>
+<li>
+<p><strong>Setgid (SGID)</strong>: When set on an executable file or directory, it allows the user who runs the program or creates files within the directory to inherit the group's privileges.</p>
+</li>
+<li>
+<p><strong>Sticky Bit</strong>: When set on a directory, it ensures that only the owner of a file within that directory can delete or rename it, even if others have write permissions on the directory.</p>
+</li>
+</ol>
+<p>Special permissions are represented by additional characters in the file permissions display.</p>
+<hr />
+<h2 id="about-linux-pipelines"><strong>About Linux Pipelines</strong><a class="headerlink" href="#about-linux-pipelines" title="Permanent link">#</a></h2>
+<p>Pipelining, in the context of the Unix command line, refers to the practice of connecting multiple commands together in a chain, where the output of one command becomes the input of the next command. This technique allows users to perform complex operations and data processing efficiently by breaking them down into smaller, focused tasks. The concept of pipelining is one of the most powerful features of the command line and greatly enhances productivity.</p>
+<h3 id="how-pipelining-works"><strong>How Pipelining Works</strong><a class="headerlink" href="#how-pipelining-works" title="Permanent link">#</a></h3>
+<p>The key to pipelining is the use of the vertical bar symbol (<code>|</code>). When you use the pipe symbol in a command, it takes the output of the preceding command and sends it as the input to the following command. The data is passed through the pipe from left to right, allowing each command in the pipeline to process it sequentially.</p>
+<p>The general syntax for pipelining is as follows:</p>
+<div class="highlight"><pre><span></span><code>command1 | command2 | command3 ...
+</code></pre></div>
+<p>The output of <code>command1</code> becomes the input of <code>command2</code>, and the output of <code>command2</code> becomes the input of <code>command3</code>, and so on.</p>
+<h3 id="benefits-of-pipelining"><strong>Benefits of Pipelining</strong><a class="headerlink" href="#benefits-of-pipelining" title="Permanent link">#</a></h3>
+<p>Pipelining offers several advantages:</p>
+<ol>
+<li>
+<p><strong>Modularity</strong>: You can break down complex tasks into smaller, manageable steps by using multiple commands in the pipeline. Each command performs a specific operation, making the overall process more organized and easier to maintain.</p>
+</li>
+<li>
+<p><strong>Efficiency</strong>: Rather than generating and storing intermediate files, pipelining processes data in real-time. This approach reduces disk I/O and saves storage space, resulting in faster and more resource-efficient data processing.</p>
+</li>
+<li>
+<p><strong>Flexibility</strong>: You can combine existing commands or custom scripts in a pipeline to achieve specific outcomes. This flexibility allows you to tailor the process to your needs, regardless of the complexity of the task.</p>
+</li>
+<li>
+<p><strong>Reusability</strong>: Pipelines are easily reusable. Once you have constructed a pipeline that performs a particular task, you can reuse it with different input data without modifying the individual commands.</p>
+</li>
+<li>
+<p><strong>Automation</strong>: Pipelining is conducive to automation, as it enables you to create scripts and automate repetitive tasks, saving time and effort.</p>
+</li>
+</ol>
+<h3 id="examples-of-pipelining"><strong>Examples of Pipelining</strong><a class="headerlink" href="#examples-of-pipelining" title="Permanent link">#</a></h3>
+<p>Let's look at some practical examples of pipelining:</p>
+<h4 id="example-1-sorting-and-displaying"><strong>Example 1: Sorting and Displaying</strong><a class="headerlink" href="#example-1-sorting-and-displaying" title="Permanent link">#</a></h4>
+<p>Suppose you have a text file named <code>data.txt</code>, and you want to sort its lines in alphabetical order and then display the first ten lines:</p>
+<div class="highlight"><pre><span></span><code>$ sort data.txt | head -n 10
+</code></pre></div>
+<p>Here, the <code>sort</code> command sorts the content of <code>data.txt</code>, and the sorted output is passed through the pipe to the <code>head</code> command, which displays the first ten lines.</p>
+<h4 id="example-2-filter-and-count"><strong>Example 2: Filter and Count</strong><a class="headerlink" href="#example-2-filter-and-count" title="Permanent link">#</a></h4>
+<p>Suppose you have a log file named <code>server.log</code>, and you want to count how many times a particular error message occurs:</p>
+<div class="highlight"><pre><span></span><code>$ grep &quot;error&quot; server.log | wc -l
+</code></pre></div>
+<p>Here, the <code>grep</code> command searches for lines containing the word "error" in <code>server.log</code>, and the resulting lines are sent to <code>wc</code> (word count) with the <code>-l</code> option to count the number of occurrences.</p>
+<h4 id="example-3-download-and-extract"><strong>Example 3: Download and Extract</strong><a class="headerlink" href="#example-3-download-and-extract" title="Permanent link">#</a></h4>
+<p>Suppose you want to download a compressed file from a URL and extract its contents directly without saving the file locally:</p>
+<div class="highlight"><pre><span></span><code>$ curl -s https://example.com/file.tar.gz | tar xz
+</code></pre></div>
+<p>Here, <code>curl</code> downloads the file and passes its output (compressed data) through the pipe to <code>tar</code>, which extracts the contents (<code>x</code> for extract, <code>z</code> for gzip, <code>s</code> for silent mode).</p>
+<hr />
+<h1 id="what-next"><strong>What next ?</strong><a class="headerlink" href="#what-next" title="Permanent link">#</a></h1>
+<p>Once you know some terminal basics, you can access your <a href="../../4.2.Storage/"><strong>storage</strong></a> and run <a href="../4.1.6.nextflow/"><strong>Nextflow</strong></a>.</p>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="../4.1.2.interface/" class="page-nav-card page-nav-prev">
+          <span class="page-nav-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Previous
+          </span>
+          <span class="page-nav-title">JupyterLab interface</span>
+        </a>
+        <a href="../4.1.4.jupyter-notebook/" class="page-nav-card page-nav-next">
+          <span class="page-nav-label">
+            Next
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+          <span class="page-nav-title">Jupyter notebooks</span>
+        </a>
+      </nav>
+
+    </main>
+    <aside class="toc-panel" aria-label="Table of contents">
+      <div class="toc-inner">
+        <p class="toc-heading">On this page</p>
+        <nav>
+          
+            <a href="#using-the-terminal" class="toc-link toc-d1">Using the terminal</a>
+            <a href="#accessing-the-terminal" class="toc-link toc-d2">Accessing the terminal</a>
+            <a href="#where-am-i-who-am-i" class="toc-link toc-d2">Where am I? Who am I?</a>
+            <a href="#basic-commands" class="toc-link toc-d2">Basic Commands</a>
+            <a href="#navigating-the-file-system" class="toc-link toc-d3">Navigating the File System</a>
+            <a href="#file-manipulation" class="toc-link toc-d3">File Manipulation</a>
+            <a href="#file-permissions-in-linux" class="toc-link toc-d2">File permissions in Linux</a>
+            <a href="#displaying-file-permissions" class="toc-link toc-d3">Displaying File Permissions</a>
+            <a href="#changing-file-permissions" class="toc-link toc-d3">Changing File Permissions</a>
+            <a href="#symbolic-notation" class="toc-link toc-d3">Symbolic Notation</a>
+            <a href="#octal-notation" class="toc-link toc-d3">Octal Notation</a>
+            <a href="#recursively-changing-permissions" class="toc-link toc-d3">Recursively Changing Permissions</a>
+            <a href="#special-permissions" class="toc-link toc-d3">Special Permissions</a>
+            <a href="#about-linux-pipelines" class="toc-link toc-d2">About Linux Pipelines</a>
+            <a href="#how-pipelining-works" class="toc-link toc-d3">How Pipelining Works</a>
+            <a href="#benefits-of-pipelining" class="toc-link toc-d3">Benefits of Pipelining</a>
+            <a href="#examples-of-pipelining" class="toc-link toc-d3">Examples of Pipelining</a>
+            <a href="#example-1-sorting-and-displaying" class="toc-link toc-d4">Example 1: Sorting and Displaying</a>
+            <a href="#example-2-filter-and-count" class="toc-link toc-d4">Example 2: Filter and Count</a>
+            <a href="#example-3-download-and-extract" class="toc-link toc-d4">Example 3: Download and Extract</a>
+            <a href="#what-next" class="toc-link toc-d1">What next ?</a>
+        </nav>
+      </div>
+    </aside>
+
+    
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="22" height="22">
+        <span>Copyright &copy; CLIMB 2026</span>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:climb@quadram.ac.uk" class="footer-link">climb@quadram.ac.uk</a>
+        <a href="https://bryn.climb.ac.uk/" class="footer-link" target="_blank" rel="noopener">Bryn Portal</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- .page-shell -->
+
+<script src="../../../assets/js/climb.js"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nextflow – CLIMB | Cloud Infrastructure for Microbial Bioinformatics</title>
+  
+  <link rel="canonical" href="https://telatin.github.io/mm-docs/4.Documentation/4.1.JupyterLab/4.1.6.nextflow/">
+  <link rel="icon" type="image/png" href="../../../assets/logo-square_CLIMB-BIG-DATA.png">
+  <meta name="search-index-url" content="../../../search/search_index.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/climb.css">
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+<!-- ══ Sidebar ══════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar" aria-label="Section navigation">
+  <div class="sidebar-header">
+    <a href="../../.." class="site-brand">
+      <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="30" height="30">
+      <span class="site-brand-name">CLIMB</span>
+    </a>
+    <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+    <div class="sidebar-mobile-sections">
+      <p class="sidebar-section-label">Sections</p>
+      <ul class="nav-root"><li class="nav-page">
+            <a href="../../../1.Overview/">Overview</a>
+          </li><li class="nav-page">
+            <a href="../../../2.Pricing/">Pricing</a>
+          </li><li class="nav-page">
+            <a href="../../../3.Getting-started/">Getting started</a>
+          </li><li class="nav-page active">
+            <a href="../../">Documentation</a>
+          </li><li class="nav-page">
+            <a href="../../../5.Support/">Support</a>
+          </li></ul>
+    </div>
+      <p class="sidebar-section-label sidebar-section-label--sub">Documentation</p>
+      <ul class="nav-root">
+        <li class="nav-page">
+      <a href="../../">Documentation</a>
+    </li><li class="nav-section active">
+      <button class="nav-section-btn open" aria-expanded="true">
+        <span>JupyterLab</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children open">
+        <li class="nav-page">
+      <a href="../">JupyterLab</a>
+    </li><li class="nav-page">
+      <a href="../4.1.1.jupyterLab-envs/">JupyterLab</a>
+    </li><li class="nav-page">
+      <a href="../4.1.2.interface/">JupyterLab interface</a>
+    </li><li class="nav-page">
+      <a href="../4.1.3.terminal/">terminal</a>
+    </li><li class="nav-page">
+      <a href="../4.1.4.jupyter-notebook/">Jupyter notebooks</a>
+    </li><li class="nav-page">
+      <a href="../4.1.5.rstudio/">RStudio</a>
+    </li><li class="nav-page active">
+      <a href="./">Nextflow</a>
+    </li>
+      </ul>
+    </li><li class="nav-section">
+      <button class="nav-section-btn" aria-expanded="false">
+        <span>Storage</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children">
+        <li class="nav-page">
+      <a href="../../4.2.Storage/">Storage</a>
+    </li><li class="nav-page">
+      <a href="../../4.2.Storage/4.2.1.storage/">Storage</a>
+    </li><li class="nav-page">
+      <a href="../../4.2.Storage/4.2.2.s3-buckets/">S3 Buckets</a>
+    </li>
+      </ul>
+    </li><li class="nav-section">
+      <button class="nav-section-btn" aria-expanded="false">
+        <span>Projects</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children">
+        <li class="nav-page">
+      <a href="../../4.3.Projects/projects/">Projects</a>
+    </li>
+      </ul>
+    </li>
+      </ul></nav>
+</aside>
+
+<!-- ══ Page shell ════════════════════════════════════════════ -->
+<div class="page-shell">
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <button class="menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../../.." class="mobile-brand">
+        <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="26" height="26">
+        <span>CLIMB</span>
+      </a>
+    </div>
+
+    <!-- Horizontal section tabs -->
+    <nav class="section-tabs" aria-label="Main sections"><a href="../../../1.Overview/"
+           class="section-tab">
+          Overview
+        </a><a href="../../../2.Pricing/"
+           class="section-tab">
+          Pricing
+        </a><a href="../../../3.Getting-started/"
+           class="section-tab">
+          Getting started
+        </a><a href="../../"
+           class="section-tab active">
+          Documentation
+        </a><a href="../../../5.Support/"
+           class="section-tab">
+          Support
+        </a></nav>
+
+    <div class="top-bar-right">
+      <button class="search-trigger" id="search-trigger" aria-label="Search documentation" aria-haspopup="dialog">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="search-trigger-label">Search</span>
+        <kbd class="search-kbd" aria-hidden="true">⌘K</kbd>
+      </button>
+      <a href="mailto:climb@quadram.ac.uk" class="top-bar-icon-btn" title="Email support" aria-label="Email support">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Search dialog -->
+  <div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" hidden>
+    <div class="search-dialog">
+      <div class="search-dialog-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="search-input" class="search-dialog-input" placeholder="Search documentation…" autocomplete="off" spellcheck="false">
+        <button id="search-close" class="search-dialog-esc" aria-label="Close search">ESC</button>
+      </div>
+      <div class="search-dialog-body" id="search-body">
+        <p class="search-hint">Type to search across all pages…</p>
+      </div>
+    </div>
+  </div>
+  <div class="search-backdrop" id="search-backdrop"></div>
+
+  <!-- Content -->
+  <div class="content-wrapper">
+    
+    <main class="page-main" id="main-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../../..">Home</a></li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>Documentation
+          </li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>JupyterLab
+          </li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span aria-current="page">Nextflow</span>
+          </li>
+        </ol>
+      </nav>
+
+      <article class="md-content">
+        <h1 id="using-nextflow"><strong>Using Nextflow</strong><a class="headerlink" href="#using-nextflow" title="Permanent link">#</a></h1>
+<hr />
+<p><a href="https://nextflow.io"><strong>Nextflow</strong></a> is a workflow framework that allows you to easily create and use computationally heavy microbial bioinformatics pipelines. Nextflow is a “Domain Specific Language” (DSL) built upon <a href="https://groovy-lang.org/"><strong>Groovy</strong></a>. Some terms that will be used throughout this page:</p>
+<ul>
+<li><strong>processes</strong>: the task to be run e.g command/script(s)</li>
+<li><strong>channels</strong>: asynchronous queues of data</li>
+<li><strong>workflows/pipelines</strong>: a set of processes and channels</li>
+<li><strong>modules</strong>: ready to use processes</li>
+</ul>
+<p>Nextflow allows users to easily join together different <strong>processes</strong> and scripting languages (Bash, Perl, Ruby, Python etc.). Processes are isolated from each other and executed independently but can interact via input and output data <strong>channels</strong>.</p>
+<p>For further information on how to create modules and pipelines please see the <a href="https://www.nextflow.io/docs/latest/index.html"><strong>nextflow documentation</strong></a>. </p>
+<p>This page will guide you through the basics of Nextflow with the following sections:</p>
+<ul>
+<li><a href="./#why-should-you-use-nextflow-"><strong>Why should you use Nextflow ?</strong></a></li>
+<li><a href="./#how-to-start"><strong>How to start ?</strong></a></li>
+<li><a href="./#using-nf-core"><strong>Using nf-core</strong></a></li>
+<li><a href="./#how-to-run-nextflow-locally-with-mamba"><strong>How to run Nextflow locally with Mamba</strong></a></li>
+</ul>
+<hr />
+<h2 id="why-should-you-use-nextflow"><strong>Why should you use Nextflow ?</strong><a class="headerlink" href="#why-should-you-use-nextflow" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p><strong>Accessibility</strong>: Nextflow makes bioinformatics accessible for everyone. Using a Nextflow pipeline, instead of performing multiple computational steps manually, you can run a single nextflow command to easily go from raw sequence reads to multiple outputs.</p>
+</li>
+<li>
+<p><strong>Continuity</strong>: Checkpoints within Nextflow pipelines allow you to resume your workflow if its stops.</p>
+</li>
+<li>
+<p><strong>Reproducibility</strong>: Nextflow supports the use of containers.</p>
+</li>
+<li>
+<p><strong>Parrallisation</strong>: You can scale -up analysis easily, running a large number of samples a the same time. Speeding up analysis time ! </p>
+</li>
+</ul>
+<hr />
+<h2 id="how-to-start"><strong>How to start?</strong><a class="headerlink" href="#how-to-start" title="Permanent link">#</a></h2>
+<p>You'll find an up-to-date, stable version pre-installed in your JupyterLab environment and, more importantly, pre-configured to take advantage of our scalable Kubernetes infrastructure. You can access Nextflow via the terminal.</p>
+<p>For more information on how to create a JupyterLab environment and use the terminal see our <a href="../4.1.1.jupyterLab-envs/"><strong>JupyterLab environments</strong></a> and <a href="../4.1.3.terminal/"><strong>Terminal</strong></a> pages.</p>
+<p>Once you have your terminal open you can access Nexflow as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">jovyan:~$ </span>nextflow<span class="w"> </span>-v
+<span class="go">[...]</span>
+<span class="go">nextflow version 25.04.8.5956</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<pre><code>Your version may be newer than the one above. You should use this pre-installed version rather than downloading another version.
+</code></pre>
+</div>
+<h3 id="climb-nextflow-config-defaults">CLIMB Nextflow config defaults<a class="headerlink" href="#climb-nextflow-config-defaults" title="Permanent link">#</a></h3>
+<p>We have tried to make it as easy as possible to use Nextflow on CLIMB, and to make full use of available resources via our Kubernetes infrastructure. Out-of-the box, we set a number of configuration defaults.</p>
+<ul>
+<li>Nextflow home is set to <code>/shared/team/nxf_work/$JUPYTERHUB_USER</code></li>
+<li>WorkDir is set to <code>/shared/team/nxf_work/$JUPYTERHUB_USER/work</code></li>
+<li>Executor is set to <code>k8s</code> (plus some supporting config)</li>
+<li><code>/shared/team</code> and <code>/shared/public</code> (read only) are mounted as PVCs to all Nextflow pods</li>
+<li>A K8s ServiceUser is pre-mounted (no credentials setup required)</li>
+<li>S3 bucket path-style access is enabled, with <code>s3.climb.ac.uk</code> set as the endpoint</li>
+<li>S3 keys have also been injected from Bryn</li>
+</ul>
+<h3 id="how-does-nextflow-work-with-climbs-infrastructure"><strong>How does Nextflow work with CLIMBs infrastructure ?</strong><a class="headerlink" href="#how-does-nextflow-work-with-climbs-infrastructure" title="Permanent link">#</a></h3>
+<p>The CLIMB infrastructure utilises <a href="https://kubernetes.io/"><strong>Kubernetes</strong></a> also known as K8s, an open-source system for automating deployment, scaling, and management of containerised applications.</p>
+<p>Nextflow has built in support for Kubernetes which allows for the execution of workflows in Kubernetes clusters.</p>
+<p>Nextflow -&gt; Kubernetes executor -&gt; Kubernetes pod(s) created to run containers for each process in the workflow</p>
+<p><strong>TLDR</strong>: don't worry about it. Nextflow and Kubernetes run everything for you !</p>
+<p>The easiest way to use Nextflow is to use pre-exiting pipelines such as those from <a href="https://nf-co.re/"><strong>nf-core</strong></a>.</p>
+<hr />
+<h2 id="using-nf-core"><strong>Using nf-core</strong><a class="headerlink" href="#using-nf-core" title="Permanent link">#</a></h2>
+<p><strong>nf-core</strong> is a community-curated set of analysis <a href="https://nf-co.re/pipelines/"><strong>pipelines</strong></a> that use Nextflow. </p>
+<p>We'll try running <code>nf-core/rnaseq</code> as an example, to demonstrate some features of how Nextflow is configured to work on CLIMB.</p>
+<p>We'll be using the flag <code>-profile test</code>, which includes links to a test dataset provided with Nextflow. As a result, we'll only need to specify the <code>--outdir</code> flag for now.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<pre><code>If there is a suggestion to update the version, ignore this !
+</code></pre>
+</div>
+<p><div class="highlight"><pre><span></span><code><span class="gp">jovyan:~$ </span>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-profile<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--outdir<span class="w"> </span>nfout
+<span class="go">[...]</span>
+<span class="go">[-        ] process &gt; NFCORE_RNASEQ:RNASEQ:ALIGN_STAR:BAM_SORT_STATS_SAMTOOLS:BAM_STATS_SAMTOOLS:SAMTOOLS_IDXSTATS -</span>
+<span class="go">[c5/3af707] process &gt; NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_QUANT (RAP1_UNINDUCED_REP1)                 [ 50%] 1 of 2</span>
+<span class="go">[-        ] process &gt; NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_TX2GENE                                     -</span>
+<span class="go">[-        ] process &gt; NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_TXIMPORT                                    -</span>
+<span class="go">[-        ] process &gt; NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_SE_GENE                                     -</span>
+<span class="go">[-        ] process &gt; NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_SE_GENE_LENGTH_SCALED                       -</span>
+<span class="go">[-        ] process &gt; NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_SE_GENE_SCALED                              -</span>
+<span class="go">[-        ] process &gt; NFCORE_RNASEQ:RNASEQ:QUANTIFY_STAR_SALMON:SALMON_SE_TRANSCRIPT                               -</span>
+<span class="go">[-        ] process &gt; NFCORE_RNASEQ:RNASEQ:DESEQ2_QC_STAR_SALMON                                                   -</span>
+<span class="go">[9f/b3b437] process &gt; NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:PICARD_MARKDUPLICATES (RAP1_UNINDUCED_REP2)   [  0%] 0 of 2</span>
+<span class="go">[-        ] process &gt; NFCORE_RNASEQ:RNASEQ:BAM_MARKDUPLICATES_PICARD:SAMTOOLS_INDEX</span>
+<span class="go">[...etc...]</span>
+</code></pre></div>
+Here we can see the pipeline is executing interdependent process in parallel, using the Kubernetes executor. This means rather than having everything running inside your notebook container directly, new Kubernetes pods are being created on the fly and spinning up containers for each process.</p>
+<p>You can track which processes are running through <a href="https://kubernetes.io/docs/reference/kubectl/"><code>kubectl</code></a>, the Kubernetes command line tool. It's also pre-installed for you and pre-configured with credentials that map to your team. These credentials mean an isolated part of CLIMBs system is used specifically for your team. This means you can <strong>track all Nextflow pods currently created</strong>. While the workflow is still executing, open another terminal tab and try running <code>kubectl</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">jovyan:~$ </span>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<span class="go">NAME                                         READY   STATUS              RESTARTS   AGE</span>
+<span class="go">jupyter-demouser-2eclimb-2dbig-2ddata-2dd   1/1     Running             0          12m</span>
+<span class="go">nf-0e32425fc6d3dd42c9a3cbb8dd3ccc8c          0/1     Pending             0          4s</span>
+<span class="go">nf-6171723bfd88a03f1417e2aead99f180          0/1     Terminating         0          12s</span>
+<span class="go">nf-0e69c114a366b717ad115431277c01d7          1/1     Running             0          9s</span>
+<span class="go">nf-31f1f1f534f51863f2e19320ca7447e0          0/1     ContainerCreating   0          4s</span>
+<span class="go">nf-75dc1d907794e300ff2117a49be85c63          0/1     Pending             0          4s</span>
+<span class="go">nf-8491621dd73c44811c49bee448771ae5          0/1     Completed           0          13s</span>
+<span class="go">nf-9aad711fc9476c27e510b9402e3089d5          0/1     ContainerCreating   0          3s</span>
+<span class="go">nf-12656c698dd83e7dc2a31e3c88818227          0/1     ContainerCreating   0          4s</span>
+<span class="go">nf-a57472aaef0073c9e77a0a7e6001a849          0/1     ContainerCreating   0          3s</span>
+<span class="go">nf-f8d94c52e9120b7b8ba117d530f77c3a          0/1     Completed</span>
+</code></pre></div>
+<p>You'll see your JupyterLab environment (<code>jupyter-demouser-2eclimb-2dbig-2ddata-2dd</code>) and all the pods that are currently running workflow process containers. The STATUS of each of the pods will change as they execute and then disappear.</p>
+<p>Once the workflow has finished, run the above command again:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">jovyan:~$ </span>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<span class="go">NAME                                         READY   STATUS    RESTARTS   AGE</span>
+<span class="go">jupyter-demouser-2eclimb-2dbig-2ddata-2dd   1/1     Running   0          17m</span>
+<span class="gp">jovyan:~$</span>
+</code></pre></div>
+<p>Now you're back to just your JupyterLab environment. You may also see those belonging to others in your team.</p>
+<h3 id="where-did-my-output-data-go"><strong>Where did my output data go?</strong><a class="headerlink" href="#where-did-my-output-data-go" title="Permanent link">#</a></h3>
+<p>Once the workflow completes, in your first terminal you'll see something like:</p>
+<div class="highlight"><pre><span></span><code><span class="go">-[nf-core/rnaseq] Pipeline completed successfully with skipped sampl(es)- -[nf-core/rnaseq] Please check MultiQC report: 1/5 samples failed strandedness check.-</span>
+<span class="go">Completed at: 16-Apr-2023 13:26:51</span>
+<span class="go">Duration : 5m 50s</span>
+<span class="go">CPU hours : 0.4</span>
+<span class="go">Succeeded : 196</span>
+</code></pre></div>
+<p>We specified <code>nfout</code> as out outdir and you'll see the directory in the file browser on the left hand side of the JupyterLab interface. Take a look in <code>nfout/pipeline_info/</code> inside your file browser. Try double clicking on the various HTML, YAML and CSV files here and you'll see that they open in new tabs for immediate reading.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>One thing to note here, when opening HTML files such as <code>execution_report_[date].html</code>, JavaScript is disabled in the tab by default. Right click the file and select <code>Open in New Browser Tab</code> from the context window to see the full report.</p>
+</div>
+<h3 id="where-are-nextflow-assets-and-temporaryintermediate-workdir-outputs-stored"><strong>Where are Nextflow assets and temporary/intermediate (workdir) outputs stored ?</strong><a class="headerlink" href="#where-are-nextflow-assets-and-temporaryintermediate-workdir-outputs-stored" title="Permanent link">#</a></h3>
+<p>By default, the CLIMB Nextflow config sets Nextflow 'home' to <code>/shared/team/nxf_work/$JUPYTERHUB_USER</code>. You'll see a number of subdirectories exist at that location, including <code>assets</code>, which will now contain the rnaseq workflow we just used, and <code>work</code>: where the intermediate outputs are located.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">jovyan:~$ </span>ls<span class="w"> </span>/shared/team/nxf_work/demouser.climb-big-data-d/
+<span class="go">assets  capsule  framework  plugins  secrets  tmp  work</span>
+</code></pre></div>
+<hr />
+<h2 id="how-to-run-nextflow-locally-with-mamba"><strong>How to run NextFlow locally with Mamba</strong><a class="headerlink" href="#how-to-run-nextflow-locally-with-mamba" title="Permanent link">#</a></h2>
+<p>When working with limited computing resources or tasks that don't require additional cores, launching new ones might not be the most efficient choice. In such cases, NextFlow offers a solution by allowing you to utilize the cores already assigned to your notebook for execution.</p>
+<p>To achieve this, NextFlow provides the option to specify the Mamba profile and set the process executor to local. By doing so, you can optimize resource usage and minimize unnecessary overhead.</p>
+<p>To run NextFlow with Mamba for nf-core pipelines, follow these steps:</p>
+<div class="highlight"><pre><span></span><code><span class="go">nextflow run &lt;your_nfcore_pipeline.nf&gt; -profile mamba -process.executor=local</span>
+<span class="go"> ```</span>
+<span class="go">Replace `&lt;your_nfcore_pipeline.nf&gt;` with the filename of the nf-core Pipeline you want to execute. The options `-profile` and `-process.executor` should be specified to ensure proper configuration.</span>
+<span class="go">If Mamba encounters issues with older Pipelines, you can use the -profile conda option. However, note that this may be slower:</span>
+
+<span class="go">```console</span>
+<span class="go">nextflow run &lt;your_nfcore_pipeline.nf&gt; -profile conda -process.executor=local</span>
+</code></pre></div>
+<hr />
+<h1 id="what-next"><strong>What next ?</strong><a class="headerlink" href="#what-next" title="Permanent link">#</a></h1>
+<p>Once you know some Nextflow basics, you can also try using the <a href="../4.1.4.jupyter-notebook/"><strong>jupyter notebooks</strong></a> and <a href="../4.1.5.rstudio/"><strong>RStudio</strong></a>.</p>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="../4.1.5.rstudio/" class="page-nav-card page-nav-prev">
+          <span class="page-nav-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Previous
+          </span>
+          <span class="page-nav-title">RStudio</span>
+        </a>
+        <a href="../../4.2.Storage/" class="page-nav-card page-nav-next">
+          <span class="page-nav-label">
+            Next
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+          <span class="page-nav-title">Storage</span>
+        </a>
+      </nav>
+
+    </main>
+    <aside class="toc-panel" aria-label="Table of contents">
+      <div class="toc-inner">
+        <p class="toc-heading">On this page</p>
+        <nav>
+          
+            <a href="#using-nextflow" class="toc-link toc-d1">Using Nextflow</a>
+            <a href="#why-should-you-use-nextflow" class="toc-link toc-d2">Why should you use Nextflow ?</a>
+            <a href="#how-to-start" class="toc-link toc-d2">How to start?</a>
+            <a href="#climb-nextflow-config-defaults" class="toc-link toc-d3">CLIMB Nextflow config defaults</a>
+            <a href="#how-does-nextflow-work-with-climbs-infrastructure" class="toc-link toc-d3">How does Nextflow work with CLIMBs infrastructure ?</a>
+            <a href="#using-nf-core" class="toc-link toc-d2">Using nf-core</a>
+            <a href="#where-did-my-output-data-go" class="toc-link toc-d3">Where did my output data go?</a>
+            <a href="#where-are-nextflow-assets-and-temporaryintermediate-workdir-outputs-stored" class="toc-link toc-d3">Where are Nextflow assets and temporary/intermediate (workdir) outputs stored ?</a>
+            <a href="#how-to-run-nextflow-locally-with-mamba" class="toc-link toc-d2">How to run NextFlow locally with Mamba</a>
+            <a href="#what-next" class="toc-link toc-d1">What next ?</a>
+        </nav>
+      </div>
+    </aside>
+
+    
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="22" height="22">
+        <span>Copyright &copy; CLIMB 2026</span>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:climb@quadram.ac.uk" class="footer-link">climb@quadram.ac.uk</a>
+        <a href="https://bryn.climb.ac.uk/" class="footer-link" target="_blank" rel="noopener">Bryn Portal</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- .page-shell -->
+
+<script src="../../../assets/js/climb.js"></script>
+</body>
+</html>

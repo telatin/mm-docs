@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RStudio – CLIMB | Cloud Infrastructure for Microbial Bioinformatics</title>
+  
+  <link rel="canonical" href="https://telatin.github.io/mm-docs/4.Documentation/4.1.JupyterLab/4.1.5.rstudio/">
+  <link rel="icon" type="image/png" href="../../../assets/logo-square_CLIMB-BIG-DATA.png">
+  <meta name="search-index-url" content="../../../search/search_index.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/climb.css">
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+<!-- ══ Sidebar ══════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar" aria-label="Section navigation">
+  <div class="sidebar-header">
+    <a href="../../.." class="site-brand">
+      <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="30" height="30">
+      <span class="site-brand-name">CLIMB</span>
+    </a>
+    <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+    <div class="sidebar-mobile-sections">
+      <p class="sidebar-section-label">Sections</p>
+      <ul class="nav-root"><li class="nav-page">
+            <a href="../../../1.Overview/">Overview</a>
+          </li><li class="nav-page">
+            <a href="../../../2.Pricing/">Pricing</a>
+          </li><li class="nav-page">
+            <a href="../../../3.Getting-started/">Getting started</a>
+          </li><li class="nav-page active">
+            <a href="../../">Documentation</a>
+          </li><li class="nav-page">
+            <a href="../../../5.Support/">Support</a>
+          </li></ul>
+    </div>
+      <p class="sidebar-section-label sidebar-section-label--sub">Documentation</p>
+      <ul class="nav-root">
+        <li class="nav-page">
+      <a href="../../">Documentation</a>
+    </li><li class="nav-section active">
+      <button class="nav-section-btn open" aria-expanded="true">
+        <span>JupyterLab</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children open">
+        <li class="nav-page">
+      <a href="../">JupyterLab</a>
+    </li><li class="nav-page">
+      <a href="../4.1.1.jupyterLab-envs/">JupyterLab</a>
+    </li><li class="nav-page">
+      <a href="../4.1.2.interface/">JupyterLab interface</a>
+    </li><li class="nav-page">
+      <a href="../4.1.3.terminal/">terminal</a>
+    </li><li class="nav-page">
+      <a href="../4.1.4.jupyter-notebook/">Jupyter notebooks</a>
+    </li><li class="nav-page active">
+      <a href="./">RStudio</a>
+    </li><li class="nav-page">
+      <a href="../4.1.6.nextflow/">Nextflow</a>
+    </li>
+      </ul>
+    </li><li class="nav-section">
+      <button class="nav-section-btn" aria-expanded="false">
+        <span>Storage</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children">
+        <li class="nav-page">
+      <a href="../../4.2.Storage/">Storage</a>
+    </li><li class="nav-page">
+      <a href="../../4.2.Storage/4.2.1.storage/">Storage</a>
+    </li><li class="nav-page">
+      <a href="../../4.2.Storage/4.2.2.s3-buckets/">S3 Buckets</a>
+    </li>
+      </ul>
+    </li><li class="nav-section">
+      <button class="nav-section-btn" aria-expanded="false">
+        <span>Projects</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children">
+        <li class="nav-page">
+      <a href="../../4.3.Projects/projects/">Projects</a>
+    </li>
+      </ul>
+    </li>
+      </ul></nav>
+</aside>
+
+<!-- ══ Page shell ════════════════════════════════════════════ -->
+<div class="page-shell">
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <button class="menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../../.." class="mobile-brand">
+        <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="26" height="26">
+        <span>CLIMB</span>
+      </a>
+    </div>
+
+    <!-- Horizontal section tabs -->
+    <nav class="section-tabs" aria-label="Main sections"><a href="../../../1.Overview/"
+           class="section-tab">
+          Overview
+        </a><a href="../../../2.Pricing/"
+           class="section-tab">
+          Pricing
+        </a><a href="../../../3.Getting-started/"
+           class="section-tab">
+          Getting started
+        </a><a href="../../"
+           class="section-tab active">
+          Documentation
+        </a><a href="../../../5.Support/"
+           class="section-tab">
+          Support
+        </a></nav>
+
+    <div class="top-bar-right">
+      <button class="search-trigger" id="search-trigger" aria-label="Search documentation" aria-haspopup="dialog">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="search-trigger-label">Search</span>
+        <kbd class="search-kbd" aria-hidden="true">⌘K</kbd>
+      </button>
+      <a href="mailto:climb@quadram.ac.uk" class="top-bar-icon-btn" title="Email support" aria-label="Email support">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Search dialog -->
+  <div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" hidden>
+    <div class="search-dialog">
+      <div class="search-dialog-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="search-input" class="search-dialog-input" placeholder="Search documentation…" autocomplete="off" spellcheck="false">
+        <button id="search-close" class="search-dialog-esc" aria-label="Close search">ESC</button>
+      </div>
+      <div class="search-dialog-body" id="search-body">
+        <p class="search-hint">Type to search across all pages…</p>
+      </div>
+    </div>
+  </div>
+  <div class="search-backdrop" id="search-backdrop"></div>
+
+  <!-- Content -->
+  <div class="content-wrapper">
+    
+    <main class="page-main" id="main-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../../..">Home</a></li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>Documentation
+          </li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>JupyterLab
+          </li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span aria-current="page">RStudio</span>
+          </li>
+        </ol>
+      </nav>
+
+      <article class="md-content">
+        <h1 id="using-rstudio"><strong>Using RStudio</strong><a class="headerlink" href="#using-rstudio" title="Permanent link">#</a></h1>
+<hr />
+<p>RStudio is an integrated development environment (IDE) specifically designed for the R programming language. It provides a user-friendly interface that simplifies the process of coding, debugging, data visualization, and data analysis using R. RStudio is available in both open-source and commercial editions.</p>
+<p>RStudio was originally an interface to interactive with <code>R</code> programming language. Since July 2022, it is now known as Posit as they support other languages such as Python. The main feature remains the same, to easily edit scripts and view input/output files. Our version of RStudio only supports the <code>R</code> programming language.</p>
+<p>This page will guide you through the basics of jupyter notebooks with the following sections:</p>
+<ul>
+<li><a href="./#features-of-rstudio"><strong>Features of RStudio</strong></a></li>
+<li><a href="./#how-to-start"><strong>How to start ?</strong></a></li>
+<li><a href="./#installing-packages"><strong>Installing packages</strong></a></li>
+</ul>
+<hr />
+<h2 id="features-of-rstudio"><strong>Features of RStudio</strong><a class="headerlink" href="#features-of-rstudio" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>Intuitive Code Editor</strong>: RStudio provides an intuitive code editor with syntax highlighting, code completion, and code folding. These features make it easier to write, edit, and navigate through R code, reducing errors and improving coding efficiency.</li>
+<li><strong>Interactive Data Visualization</strong>: RStudio has an integrated plot viewer that supports interactive and high-quality data visualizations using popular R packages like ggplot2 and plotly. Users can easily explore and customize visualizations to gain insights from data.</li>
+<li><strong>Workspace and Data Management</strong>: RStudio offers a workspace panel that displays all the variables and data objects currently in memory. Users can inspect, manipulate, and remove objects directly from the workspace, making it easy to manage data and perform exploratory data analysis.</li>
+<li><strong>R Markdown Support</strong>: RStudio has strong support for R Markdown, a format that allows users to create dynamic documents that combine R code, visualizations, and narrative text. This feature is beneficial for creating reproducible reports, research papers, and data-driven presentations.</li>
+<li><strong>Integrated R Console and Terminal</strong>: RStudio includes a built-in R console that allows users to interactively execute R code and see the output in real-time. Additionally, it provides a terminal console for executing system commands and running scripts from the command line, making it a versatile tool for data analysis and workflow management.</li>
+</ul>
+<p>If you are not familiar with <code>R</code> or RStudio you can find more information here: <a href="https://education.rstudio.com/learn/beginner/">https://education.rstudio.com/learn/beginner/ 
+</a></p>
+<hr />
+<h2 id="how-to-start"><strong>How to start?</strong><a class="headerlink" href="#how-to-start" title="Permanent link">#</a></h2>
+<p>Both <code>R</code> and RStudio are already installed for you. You will find them under the “Notebooks” section of the Main Work Area. </p>
+<p><img alt="RStudio" src="../../img/r-open.png" /></p>
+<p>For pure access to <code>R</code> you can use the Jupyter Notebook. For access to RStudio, a separate tab will be opened:</p>
+<p><img alt="RStudio" src="../../img/rstudio.png" /></p>
+<ol>
+<li><strong>Editor</strong> – This is where you can interactively write and edit your scripts.</li>
+<li><strong>Console</strong> – This is where your code can be run.</li>
+<li><strong>Environment</strong> – This is where all input/output objects can be viewed as either Data or Values.</li>
+<li><strong>Output</strong> – View plots, packages, help for package documentation.</li>
+</ol>
+<p>You can Select “File” and “New File” to create and open a variety of file types:</p>
+<p><img alt="RStudio" src="../../img/r-new-file.png" /></p>
+<hr />
+<h2 id="installing-packages"><strong>Installing packages</strong><a class="headerlink" href="#installing-packages" title="Permanent link">#</a></h2>
+<p>You can install packages which provide additional features and documentation to the base <code>R</code> packages. You can do this via the GUI or via the terminal like so:</p>
+<div class="highlight"><pre><span></span><code>install.packages(&quot;ggplot2&quot;)
+</code></pre></div>
+<p>Once a package is installed, you will need to load it:
+<div class="highlight"><pre><span></span><code>library(ggplot2)
+</code></pre></div></p>
+<p>Now all of the features from <code>ggplot2</code> will be available to you.</p>
+<p>All plots are highly customisable, you just need to know the right functions and layering them.</p>
+<!-- prettier-ignore -->
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Regarding R version control – we will only be providing the newest version of R so please do check the version for your scripts.</p>
+</div>
+<p>Here is a simple example of a plot using the <code>ggplot2</code> package:</p>
+<div class="highlight"><pre><span></span><code>library(ggplot2)
+mpg
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+</code></pre></div>
+<p><img alt="RStudio" src="../../img/r-in-action.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<pre><code>You can find information on installed R packages on your home dir. Please be aware that you only have 20GB of space here !
+</code></pre>
+</div>
+<h3 id="other-useful-packages"><strong>Other useful packages</strong><a class="headerlink" href="#other-useful-packages" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="https://xavierdidelot.github.io/BactDating/"><code>BactDating</code></a> – time scaled phylogenies</li>
+<li><code>ggtree</code> – visualising phylogenetic trees</li>
+<li><a href="https://www.danieldsjoberg.com/gtsummary/"><code>gtsummary</code></a> – presentation ready data summary and analytic results tables</li>
+<li><code>lme4</code> – Linear Mixed-Effects Models</li>
+<li><a href="https://joey711.github.io/phyloseq/"><code>phyloseq</code></a> – Handling and analysis of high-throughput microbial communities</li>
+<li><a href="https://github.com/jbisanz/qiime2R"><code>qiime2R</code></a> – importing Qiime output tables</li>
+<li><a href="https://r-graph-gallery.com/38-rcolorbrewers-palettes.html"><code>RcolorBrewer</code></a> – ColorBrewer Palettes</li>
+<li><a href="https://www.tidyverse.org/"><code>tidyverse</code></a> - collection of R packages designed for data science</li>
+<li><a href="https://r-graph-gallery.com/14-venn-diagramm"><code>VennDiagram</code></a> – Generates High-Resolution Venn and Euler Plots</li>
+</ul>
+<p>There are many "cheat sheets" available for <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization-2.1.pdf">individual packages which you can find here</a>.</p>
+<hr />
+<h2 id="how-to-upload-file-to-rstudio-from-local-machine"><strong>How to upload file to Rstudio from local machine</strong><a class="headerlink" href="#how-to-upload-file-to-rstudio-from-local-machine" title="Permanent link">#</a></h2>
+<ol>
+<li>
+<p>Open the Rstudio session.
+<img alt="Rstudio" src="../../img/rstudio.png" /></p>
+</li>
+<li>
+<p>Click on the <strong>Upload</strong> tab in the <strong>Output</strong> section.
+<img alt="Rstudio" src="../../img/rstudio-Upload.png" /></p>
+</li>
+<li>
+<p>A pop-up window <em>Upload Files</em> will be open.
+<img alt="Rstudio" src="../../img/rstudio-Upload-files.png" /> </p>
+</li>
+<li>
+<p>Click on the  <em>Choose file</em> and browse to the location of the file within the local machine and then select the file you want to upload and click on "Open".
+<img alt="Rstudio" src="../../img/rstudio-upload-files2.png" /></p>
+</li>
+<li>
+<p>Click <strong>OK</strong></p>
+</li>
+<li>
+<p>Now you can see the file in the <strong>Output</strong> section.
+<img alt="Rstudio" src="../../img/rstudio-uploaded-files.png" /></p>
+</li>
+</ol>
+<hr />
+<h1 id="what-next"><strong>What next ?</strong><a class="headerlink" href="#what-next" title="Permanent link">#</a></h1>
+<p>Once you know some RStudio basics, you can also try using the <a href="../4.1.3.terminal/"><strong>Terminal</strong></a>, <a href="../4.1.4.jupyter-notebook/"><strong>Jupyter notebooks</strong></a> and <a href="../4.1.6.nextflow/"><strong>Nextflow</strong></a>.</p>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="../4.1.4.jupyter-notebook/" class="page-nav-card page-nav-prev">
+          <span class="page-nav-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Previous
+          </span>
+          <span class="page-nav-title">Jupyter notebooks</span>
+        </a>
+        <a href="../4.1.6.nextflow/" class="page-nav-card page-nav-next">
+          <span class="page-nav-label">
+            Next
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+          <span class="page-nav-title">Nextflow</span>
+        </a>
+      </nav>
+
+    </main>
+    <aside class="toc-panel" aria-label="Table of contents">
+      <div class="toc-inner">
+        <p class="toc-heading">On this page</p>
+        <nav>
+          
+            <a href="#using-rstudio" class="toc-link toc-d1">Using RStudio</a>
+            <a href="#features-of-rstudio" class="toc-link toc-d2">Features of RStudio</a>
+            <a href="#how-to-start" class="toc-link toc-d2">How to start?</a>
+            <a href="#installing-packages" class="toc-link toc-d2">Installing packages</a>
+            <a href="#other-useful-packages" class="toc-link toc-d3">Other useful packages</a>
+            <a href="#how-to-upload-file-to-rstudio-from-local-machine" class="toc-link toc-d2">How to upload file to Rstudio from local machine</a>
+            <a href="#what-next" class="toc-link toc-d1">What next ?</a>
+        </nav>
+      </div>
+    </aside>
+
+    
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="22" height="22">
+        <span>Copyright &copy; CLIMB 2026</span>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:climb@quadram.ac.uk" class="footer-link">climb@quadram.ac.uk</a>
+        <a href="https://bryn.climb.ac.uk/" class="footer-link" target="_blank" rel="noopener">Bryn Portal</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- .page-shell -->
+
+<script src="../../../assets/js/climb.js"></script>
+</body>
+</html>

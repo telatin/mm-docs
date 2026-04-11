@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JupyterLab interface – CLIMB | Cloud Infrastructure for Microbial Bioinformatics</title>
+  
+  <link rel="canonical" href="https://telatin.github.io/mm-docs/4.Documentation/4.1.JupyterLab/4.1.2.interface/">
+  <link rel="icon" type="image/png" href="../../../assets/logo-square_CLIMB-BIG-DATA.png">
+  <meta name="search-index-url" content="../../../search/search_index.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/climb.css">
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+<!-- ══ Sidebar ══════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar" aria-label="Section navigation">
+  <div class="sidebar-header">
+    <a href="../../.." class="site-brand">
+      <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="30" height="30">
+      <span class="site-brand-name">CLIMB</span>
+    </a>
+    <button class="sidebar-close" id="sidebar-close" aria-label="Close navigation">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <nav class="sidebar-nav">
+    
+    <div class="sidebar-mobile-sections">
+      <p class="sidebar-section-label">Sections</p>
+      <ul class="nav-root"><li class="nav-page">
+            <a href="../../../1.Overview/">Overview</a>
+          </li><li class="nav-page">
+            <a href="../../../2.Pricing/">Pricing</a>
+          </li><li class="nav-page">
+            <a href="../../../3.Getting-started/">Getting started</a>
+          </li><li class="nav-page active">
+            <a href="../../">Documentation</a>
+          </li><li class="nav-page">
+            <a href="../../../5.Support/">Support</a>
+          </li></ul>
+    </div>
+      <p class="sidebar-section-label sidebar-section-label--sub">Documentation</p>
+      <ul class="nav-root">
+        <li class="nav-page">
+      <a href="../../">Documentation</a>
+    </li><li class="nav-section active">
+      <button class="nav-section-btn open" aria-expanded="true">
+        <span>JupyterLab</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children open">
+        <li class="nav-page">
+      <a href="../">JupyterLab</a>
+    </li><li class="nav-page">
+      <a href="../4.1.1.jupyterLab-envs/">JupyterLab</a>
+    </li><li class="nav-page active">
+      <a href="./">JupyterLab interface</a>
+    </li><li class="nav-page">
+      <a href="../4.1.3.terminal/">terminal</a>
+    </li><li class="nav-page">
+      <a href="../4.1.4.jupyter-notebook/">Jupyter notebooks</a>
+    </li><li class="nav-page">
+      <a href="../4.1.5.rstudio/">RStudio</a>
+    </li><li class="nav-page">
+      <a href="../4.1.6.nextflow/">Nextflow</a>
+    </li>
+      </ul>
+    </li><li class="nav-section">
+      <button class="nav-section-btn" aria-expanded="false">
+        <span>Storage</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children">
+        <li class="nav-page">
+      <a href="../../4.2.Storage/">Storage</a>
+    </li><li class="nav-page">
+      <a href="../../4.2.Storage/4.2.1.storage/">Storage</a>
+    </li><li class="nav-page">
+      <a href="../../4.2.Storage/4.2.2.s3-buckets/">S3 Buckets</a>
+    </li>
+      </ul>
+    </li><li class="nav-section">
+      <button class="nav-section-btn" aria-expanded="false">
+        <span>Projects</span>
+        <svg class="nav-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <ul class="nav-children">
+        <li class="nav-page">
+      <a href="../../4.3.Projects/projects/">Projects</a>
+    </li>
+      </ul>
+    </li>
+      </ul></nav>
+</aside>
+
+<!-- ══ Page shell ════════════════════════════════════════════ -->
+<div class="page-shell">
+
+  <!-- Top bar -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <button class="menu-btn" id="menu-btn" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../../.." class="mobile-brand">
+        <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="26" height="26">
+        <span>CLIMB</span>
+      </a>
+    </div>
+
+    <!-- Horizontal section tabs -->
+    <nav class="section-tabs" aria-label="Main sections"><a href="../../../1.Overview/"
+           class="section-tab">
+          Overview
+        </a><a href="../../../2.Pricing/"
+           class="section-tab">
+          Pricing
+        </a><a href="../../../3.Getting-started/"
+           class="section-tab">
+          Getting started
+        </a><a href="../../"
+           class="section-tab active">
+          Documentation
+        </a><a href="../../../5.Support/"
+           class="section-tab">
+          Support
+        </a></nav>
+
+    <div class="top-bar-right">
+      <button class="search-trigger" id="search-trigger" aria-label="Search documentation" aria-haspopup="dialog">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="search-trigger-label">Search</span>
+        <kbd class="search-kbd" aria-hidden="true">⌘K</kbd>
+      </button>
+      <a href="mailto:climb@quadram.ac.uk" class="top-bar-icon-btn" title="Email support" aria-label="Email support">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Search dialog -->
+  <div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search" hidden>
+    <div class="search-dialog">
+      <div class="search-dialog-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="search-input" class="search-dialog-input" placeholder="Search documentation…" autocomplete="off" spellcheck="false">
+        <button id="search-close" class="search-dialog-esc" aria-label="Close search">ESC</button>
+      </div>
+      <div class="search-dialog-body" id="search-body">
+        <p class="search-hint">Type to search across all pages…</p>
+      </div>
+    </div>
+  </div>
+  <div class="search-backdrop" id="search-backdrop"></div>
+
+  <!-- Content -->
+  <div class="content-wrapper">
+    
+    <main class="page-main" id="main-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../../..">Home</a></li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>Documentation
+          </li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>JupyterLab
+          </li>
+          <li>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <span aria-current="page">JupyterLab interface</span>
+          </li>
+        </ol>
+      </nav>
+
+      <article class="md-content">
+        <h1 id="what-can-i-do-with-a-jupyterlab-environment"><strong>What can I do with a JupyterLab environment ?</strong><a class="headerlink" href="#what-can-i-do-with-a-jupyterlab-environment" title="Permanent link">#</a></h1>
+<hr />
+<p>When you first open the JupyterLab environment, you'll be presented with a <a href="https://jupyterlab.readthedocs.io/en/latest/"><strong>JupyterLab</strong></a> interface. This is a web-based interface that allows you to interact with the JupyterLab environment.</p>
+<p>This page will guide you through how to navigate the JupyterLab environment and its features with the following sections:</p>
+<ul>
+<li><a href="./#jupyterlab-terminology"><strong>JupyterLab terminology</strong></a></li>
+<li><a href="./#the-jupyterlab-interface"><strong>The JupyterLab interface</strong></a></li>
+<li><a href="./#using-the-interface"><strong>Using the interface</strong></a></li>
+</ul>
+<p>If you are unsure how to get to this interface, please see the <a href="../4.1.1.jupyterLab-envs/"><strong>JupyterLab page</strong></a>.</p>
+<p><img alt="jupyterhub dashboard" src="../img/jupyterlab-dashboard-1.png" /></p>
+<hr />
+<h2 id="jupyterlab-terminology"><strong>JupyterLab terminology</strong><a class="headerlink" href="#jupyterlab-terminology" title="Permanent link">#</a></h2>
+<p>To avoid confusion, here are a few similar but different terms that we use throughout the CLIMB documentation:</p>
+<ul>
+<li><strong>JupyterLab</strong> - the next-generation user interface including a file browser, a terminal, an RStudio extension, as well as Jupyter Notebooks and Nextflow access.</li>
+<li><strong>Jupyter Notebook</strong> - a powerful and popular tool <strong>within the interface</strong> for interactive computing, data analysis, and data visualisation.</li>
+</ul>
+<p>We highly recommend spending a few moments familiarising yourself with the basic JupyterLab interface. Follow the steps below and head to the <a href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html"><strong>JupyterLab interface docs</strong></a> for more detailed information on using the interface.</p>
+<p>Before we start there are a few terms which you might not be familiar with;</p>
+<ul>
+<li>
+<p><strong>Console:</strong> run code interactively in a kernel.</p>
+</li>
+<li>
+<p><strong>Kernel:</strong> separate processes which run different coding languages and environments.</p>
+</li>
+<li>
+<p><strong>Notebooks:</strong> Jupyter notebooks (.ipynb files) which can be run with different coding languages through kernels.</p>
+</li>
+</ul>
+<hr />
+<h2 id="the-jupyterlab-interface"><strong>The JupyterLab interface</strong><a class="headerlink" href="#the-jupyterlab-interface" title="Permanent link">#</a></h2>
+<p>The JupyterLab interface consists of 3 main components; the menu bar, sidebar and main work area.</p>
+<p><img alt="jupyterhub dashboard" src="../img/jupyterlab-dashboard-1.png" /></p>
+<ol>
+<li>
+<p><strong>Menu bar:</strong> where you can select interface actions (File, Edit, View, Run etc.).</p>
+</li>
+<li>
+<p><strong>Sidebar:</strong> where you can access the file browser.</p>
+</li>
+<li>
+<p><strong>Main work area:</strong> where you can place all your open tabs and arrange them as you like.</p>
+</li>
+</ol>
+<p>An overview of what you can do in each component will be explained below:</p>
+<hr />
+<h2 id="menu-bar"><strong>Menu bar</strong><a class="headerlink" href="#menu-bar" title="Permanent link">#</a></h2>
+<p><img alt="jupyterhub dashboard" src="../img/jupyterlab-dashboard-1.png" /></p>
+<p>Here you can select different actions relating to different aspects of the interface:</p>
+<ul>
+<li>
+<p><strong>File:</strong> Actions for files and folders</p>
+</li>
+<li>
+<p><strong>Edit:</strong> Actions for editing documents</p>
+</li>
+<li>
+<p><strong>View:</strong> Actions to change the appearance of JupyterLab</p>
+</li>
+<li>
+<p><strong>Run:</strong> Actions for code within notebooks and consoles</p>
+</li>
+<li>
+<p><strong>Kernel:</strong> Actions for managing kernels</p>
+</li>
+<li>
+<p><strong>Tabs:</strong> List of open documents and activities</p>
+</li>
+<li>
+<p><strong>Settings:</strong> Common and advanced settings management</p>
+</li>
+<li>
+<p><strong>Help:</strong> A list of helpful links</p>
+</li>
+</ul>
+<hr />
+<h2 id="sidebar"><strong>Sidebar</strong><a class="headerlink" href="#sidebar" title="Permanent link">#</a></h2>
+<p>Here you can easily access and navigate the <strong>file system</strong> to create, upload, download and manage files and directories.</p>
+<p><img alt="jupyterhub dashboard" src="../img/jupyterlab-dashboard-2.png" /></p>
+<p>Your <strong>home directory</strong> <code>/home/jovyan (~)</code> serves as the default/base location for the file browser. You will automatically have the following directories mounted to  your home directory:</p>
+<ul>
+<li>lost+found</li>
+<li>shared-public</li>
+<li>shared-team</li>
+</ul>
+<p>For more detailed information on CLIMBs storage options see our <a href="../../4.2.Storage/"><strong>Storage page</strong></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please be aware that your home directory is not a safe place for storage, you should use the <code>shared-team</code> directory or S3 buckets for your data and databases. If your home directory is full, <strong>you will not be able to launch new JupyterLab environments</strong>.</p>
+</div>
+<hr />
+<h2 id="main-work-area"><strong>Main work area</strong><a class="headerlink" href="#main-work-area" title="Permanent link">#</a></h2>
+<p><img alt="jupyterhub dashboard" src="../img/jupyterlab-dashboard-9.png" /></p>
+<p>Within the main work area you can start different analysis through the <strong>launcher</strong>. Clicking on one of these tiles will open a new tab in the activity area. Each new activity starts a new kernel, a separate processes which allows you to use different programming languages/features as a new tab. </p>
+<p>The Main Work Area launcher is separated into 4 sections; Notebook, Console, Other and CLIMB-TRE. Each section contains shortcuts to launch different applications:</p>
+<h3 id="notebook"><strong>Notebook</strong><a class="headerlink" href="#notebook" title="Permanent link">#</a></h3>
+<p>This section includes shortcuts to launch <strong>Jupyter notebooks</strong> using both python and R kernels. It also allows users to launch the <strong>RStudio</strong> extension.</p>
+<p><img alt="launcher" src="../img/launcher-1.png" /></p>
+<p>For more information on using Jupyter notebooks, see our <a href="../4.1.4.jupyter-notebook/"><strong>Jupyter Notebooks page</strong></a>.</p>
+<p>For more information on using R and RStudio, see our <a href="../4.1.5.rstudio/"><strong>RStudio page</strong></a>.</p>
+<h3 id="console"><strong>Console</strong><a class="headerlink" href="#console" title="Permanent link">#</a></h3>
+<p>This section includes shortcuts to launch code (python, R) interactively in a kernel.</p>
+<p><img alt="launcher" src="../img/launcher-2.png" /></p>
+<h3 id="other"><strong>Other</strong><a class="headerlink" href="#other" title="Permanent link">#</a></h3>
+<p>This section includes shortcuts to create a new terminal session, new files (text, markdown, python, R) and access contextual help.</p>
+<p><img alt="launcher" src="../img/launcher-3.png" /></p>
+<p>For more information on using the terminal, see our <a href="../4.1.3.terminal/"><strong>Terminal page</strong></a>.</p>
+<p>For more information on using Nextflow via the terminal, see our <a href="../4.1.6.nextflow/"><strong>Nextflow page</strong></a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Please note that when you install a new environment via <strong>conda</strong>, it will <strong>appear as new tiles</strong> in the Notebook and Console sections.</p>
+</div>
+<h3 id="climb-tre"><strong>CLIMB-TRE</strong><a class="headerlink" href="#climb-tre" title="Permanent link">#</a></h3>
+<p>The CLIMB Trusted Research Environment (CLIMB-TRE) is a package specific project.</p>
+<p>This sections includes shortcuts for specific use cases and <strong>is not relevant for the majority of users</strong>. This includes CLIMB-TRE documentation, Onyx access and S3 documents.</p>
+<p><img alt="launcher" src="../img/launcher-4.png" /></p>
+<hr />
+<h2 id="using-the-interface"><strong>Using the interface</strong><a class="headerlink" href="#using-the-interface" title="Permanent link">#</a></h2>
+<p>You can have multiple tabs open in the activity area:</p>
+<p><img alt="jupyterhub dashboard" src="../img/jupyterlab-dashboard-10.png" /></p>
+<p>You can drag and drop tabs in the activity area to rearrange them: </p>
+<p><img alt="jupyterhub dashboard" src="../img/jupyterlab-dashboard-11.png" /></p>
+<p>You can also drag and drop files from the file browser into the activity area to open them in the appropriate application. </p>
+<p>Tabs can be resized or subdivided, just drag a tab to the center of a tab panel to move the tab to the panel. Subdivide a tab panel by dragging a tab to the left, right, top, or bottom of the panel.</p>
+<p>To create a new tab, click the <code>+</code> icon in the top right of the activity area, or use <code>File &gt; New Launcher</code>. Ctrl+Shift+L</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>With everything accessible in one place, there is no need for a single user to have access to multiple JupyterLab environments from Bryn. You can have all your work running in tandem in one JupyterLab environment.</p>
+</div>
+<hr />
+<h3 id="manage-kernels-and-terminals"><strong>Manage kernels and terminals</strong><a class="headerlink" href="#manage-kernels-and-terminals" title="Permanent link">#</a></h3>
+<p>When you close a notebook or terminal from the main work area, it will still continue to run. To manage them you can use the <strong>sidebar</strong>.</p>
+<p>You can close running kernels or terminals individually or use the <strong>Shut Down All</strong> button:</p>
+<p><img alt="jupyterhub dashboard" src="../img/jupyterlab-dashboard-8.png" /></p>
+<p><img alt="jupyterhub dashboard" src="../img/jupyterlab-dashboard-8.1.png" /></p>
+<hr />
+<h1 id="what-is-next"><strong>What is next ?</strong><a class="headerlink" href="#what-is-next" title="Permanent link">#</a></h1>
+<p>Once you are familiar with the JupyterLab interface, have a look at how storage is integrated with the interface on our <a href="../../4.2.Storage/"><strong>Storage page</strong></a>.</p>
+<p>You can also have a look at our documentation dedicated to using the <a href="../4.1.3.terminal/"><strong>terminal</strong></a>, <a href="../4.1.4.jupyter-notebook/"><strong>Jupyter notebooks</strong></a>, <a href="../4.1.5.rstudio/"><strong>RStudio</strong></a> and <a href="../4.1.6.nextflow/"><strong>Nextflow</strong></a>.</p>
+      </article>
+      <nav class="page-nav" aria-label="Page navigation">
+        <a href="../4.1.1.jupyterLab-envs/" class="page-nav-card page-nav-prev">
+          <span class="page-nav-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Previous
+          </span>
+          <span class="page-nav-title">JupyterLab</span>
+        </a>
+        <a href="../4.1.3.terminal/" class="page-nav-card page-nav-next">
+          <span class="page-nav-label">
+            Next
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+          <span class="page-nav-title">terminal</span>
+        </a>
+      </nav>
+
+    </main>
+    <aside class="toc-panel" aria-label="Table of contents">
+      <div class="toc-inner">
+        <p class="toc-heading">On this page</p>
+        <nav>
+          
+            <a href="#what-can-i-do-with-a-jupyterlab-environment" class="toc-link toc-d1">What can I do with a JupyterLab environment ?</a>
+            <a href="#jupyterlab-terminology" class="toc-link toc-d2">JupyterLab terminology</a>
+            <a href="#the-jupyterlab-interface" class="toc-link toc-d2">The JupyterLab interface</a>
+            <a href="#menu-bar" class="toc-link toc-d2">Menu bar</a>
+            <a href="#sidebar" class="toc-link toc-d2">Sidebar</a>
+            <a href="#main-work-area" class="toc-link toc-d2">Main work area</a>
+            <a href="#notebook" class="toc-link toc-d3">Notebook</a>
+            <a href="#console" class="toc-link toc-d3">Console</a>
+            <a href="#other" class="toc-link toc-d3">Other</a>
+            <a href="#climb-tre" class="toc-link toc-d3">CLIMB-TRE</a>
+            <a href="#using-the-interface" class="toc-link toc-d2">Using the interface</a>
+            <a href="#manage-kernels-and-terminals" class="toc-link toc-d3">Manage kernels and terminals</a>
+            <a href="#what-is-next" class="toc-link toc-d1">What is next ?</a>
+        </nav>
+      </div>
+    </aside>
+
+    
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="../../../assets/logo-square_CLIMB-BIG-DATA.png" alt="" width="22" height="22">
+        <span>Copyright &copy; CLIMB 2026</span>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:climb@quadram.ac.uk" class="footer-link">climb@quadram.ac.uk</a>
+        <a href="https://bryn.climb.ac.uk/" class="footer-link" target="_blank" rel="noopener">Bryn Portal</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- .page-shell -->
+
+<script src="../../../assets/js/climb.js"></script>
+</body>
+</html>
